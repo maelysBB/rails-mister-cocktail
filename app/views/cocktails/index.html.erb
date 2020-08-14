@@ -1,0 +1,36 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <a class="navbar-brand" href="#">
+    <img src="https://image.flaticon.com/icons/png/512/168/168558.png" />
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">All cocktails</a>
+      </li>
+      <li>
+        <div class = "p-20">
+          <%= simple_form_for(:search, url: cocktails_path, method: "GET", html: { class: 'form-inline p-60 container' }) do |f| %>
+            <%= f.input "", required: false, input_html: {value: "", placeholder: "search"} %>
+            <%= f.submit "Search", class: "btn btn-success" %>
+          <% end %>
+        </div>
+    </ul>
+  </div>
+</div>
+<h1> All the best cocktails </h1>
+
+<ul class = "d-flex align-items-center  justify-content-center">
+      <% @cocktails.each do |cocktail| %>
+        <li class = "card item" style="margin: 15px ; height: 400px" > <%= link_to cocktail.name, cocktails_path%>
+            <img src="<%=cocktail.image%>" alt="" width = '400px' height = '300px'>
+        <% cocktail.doses.each do | dose | %>
+            <p> <%= "#{dose.description} : #{dose.ingredient.name}"%></p>
+          <% end %>
+        </li>
+      <%end%>
+</ul>

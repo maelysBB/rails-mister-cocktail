@@ -1,0 +1,11 @@
+<div class="container">
+  <h1> Create your delicious cocktail</h1>
+  <div class = "card">
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :description %>
+      <%= f.association :ingredient %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+
+</div>

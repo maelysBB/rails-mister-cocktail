@@ -1,0 +1,7 @@
+<h1><%= @cocktail.name %></h1>
+<img src="<%=@cocktail.image%>" alt="">
+<ul>
+  <% @cocktail.doses.each do | dose | %>
+  <li> <%= "#{dose.description} : #{dose.ingredient.name}"%></li>
+  <% end %>
+</ul>
